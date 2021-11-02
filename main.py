@@ -10,6 +10,13 @@ def mash_line(arg, arg1):
     df1 = df1.drop('City', 1)
     df1 = df1.drop('Region', 1)
     df1 = df1.drop('Country', 1)
+
+    for j in range(0,10):
+        count = 0
+        for i in df1.values:
+            count += i[j]
+        if count == 0:
+            df1 = df1.drop(df1.columns[j], 1)
     df2 = df1.sum() / df1.where(df1 > 0).count()
     df4 = []
     for i in df2.index.tolist():
@@ -20,10 +27,7 @@ def mash_line(arg, arg1):
     reg.fit(np.array(df4).reshape(-1, 1), df2)
 
     print('\033[1m''Данные по городам', arg, ',которыми мы обладаем:''\033[0m')
-    count = 0
-    for i in df2:
-        print('\033[91m',2010 + count,'\033[0m'' - ', i, 'USD')
-        count += 1
+    print(df2)
     print('\033[1m''В', arg, ',в''\033[91m', arg1,'\033[0m''\033[1m' 'году, интернет будет стоить - ', reg.predict([[arg1]])[0], 'USD''\033[0m')
 
-mash_line('Norway', 2050)
+mash_line('Turkey', 20)
