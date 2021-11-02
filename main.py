@@ -27,7 +27,8 @@ def mash_line(arg, arg1):
     reg.fit(np.array(df4).reshape(-1, 1), df2)
 
     print('\033[1m''Данные по городам', arg, ',которыми мы обладаем:''\033[0m')
-    print(df2)
+    for i in range(len(df4)):
+        print('\033[91m',df4[i],'\033[0m' ' - ', df2[i], ' USD')
     print('\033[1m''В', arg, ',в''\033[91m', arg1,'\033[0m''\033[1m' 'году, интернет будет стоить - ', reg.predict([[arg1]])[0], 'USD''\033[0m')
 
-mash_line('Turkey', 20)
+mash_line('New Zealand', 2000)
