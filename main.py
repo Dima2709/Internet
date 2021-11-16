@@ -11,7 +11,7 @@ def mash_line(arg, arg1):
     df1 = df1.drop('Region', 1)
     df1 = df1.drop('Country', 1)
 
-    for j in range(0, 10):
+    for j in range(len(df1.columns)-1):
         count = 0
         for i in df1.values:
             count += i[j]
